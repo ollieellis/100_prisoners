@@ -26,6 +26,16 @@ def add_all_to_each_array(twoD_array, max_value):
             new_arrays = np.append(new_arrays, append_to_each_array(twoD_array, i), axis=0)
     return new_arrays
 
+def gen_rand_sequence(n): 
+    possible_numbers = np.arange(n)
+    sequence = np.zeros(n)
+    for i in range(n)[::-1]:
+        chosen_index = random.randint(0,i)
+        sequence[n-i-1] = possible_numbers[chosen_index]
+        possible_numbers[chosen_index] = possible_numbers[i]
+    return sequence
+
+
 def next_number_solution(prisoner_num, box_array):
     prevously_visited = set()
     stop_searching = False
